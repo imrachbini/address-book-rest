@@ -2,3 +2,5 @@
 *.pyc
 */migrations/*
 .DS_Store
+/db.sqlite3
+.vscode
