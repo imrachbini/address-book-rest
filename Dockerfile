@@ -28,4 +28,4 @@ ENV MYSQL_PORT 3306
 
 EXPOSE 8080
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["sh","./entrypoint.sh"]
