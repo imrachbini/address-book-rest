@@ -18,6 +18,8 @@ RUN pip install -r requirements.txt
 
 #ENV {KEY} {VALUE}
 
+ENV MYSQL_DB contacs
+
 ENV MYSQL_USER myuser
 
 ENV MYSQL_PASSWORD myuserpassword

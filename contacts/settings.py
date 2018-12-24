@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v3zessx0skqht2glu%mg)4*y$k+96e6i0^cl2tdt)%z_abopfm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -75,12 +75,28 @@ WSGI_APPLICATION = 'contacts.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', 
+            'NAME': 'contacts',
+            'USER': 'imam',
+            'PASSWORD': '',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
     }
-}
+elif not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', 
+            'NAME': os.getenv('MYSQL_DB'),
+            'USER': os.getenv('MYSQL_USER'),
+            'PASSWORD': os.getenv('MYSQL_PASSWORD'),
+            'HOST': os.getenv('MYSQL_HOST'),
+            'PORT': os.getenv('MYSQL_PORT'),
+        }
+    }
 
 
 # Password validation
