@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v3zessx0skqht2glu%mg)4*y$k+96e6i0^cl2tdt)%z_abopfm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+LOCAL_DB = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -75,7 +76,7 @@ WSGI_APPLICATION = 'contacts.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-if DEBUG:
+if LOCAL_DB:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql', 
@@ -86,7 +87,7 @@ if DEBUG:
             'PORT': '3306',
         }
     }
-elif not DEBUG:
+elif not LOCAL_DB:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql', 
